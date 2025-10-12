@@ -200,11 +200,9 @@
 
 .card__icon-button {
   display: flex;
-
   justify-content: start;
   align-items: center;
   padding: 0;
-  border: none;
   background-color: transparent;
   border: 2px solid transparent;
   inline-size: 38px;
