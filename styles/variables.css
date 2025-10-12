@@ -1,1 +1,37 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+:root {
+  --main-font: "Inter", sans-serif;
+  --accent-font: "PressStart2P", sans-serif;
+
+  --text-weight: 410;
+  --card-header-weight: 715;
+
+  --background-gradient: repeating-linear-gradient(
+      90deg,
+      #d3d3d3,
+      #d3d3d3 2px,
+      transparent 2px,
+      transparent 4px
+    ),
+    repeating-linear-gradient(
+      #d3d3d3,
+      #d3d3d3 2px,
+      transparent 2px,
+      transparent 4px
+    ),
+    linear-gradient(#e7e7e7 0.01%, #1a1a1a);
+
+  --card-inline-size: clamp(375px, 50vw, 700px);
+  --footer-inline-size: clamp(306px, 48.6vw, 335px);
+
+  --accent-color: black;
+  --hover-button-color: white;
+
+  --heart-contour-color: black;
+  --heart-main-body-color: transparent;
+  --heart-core-color: transparent;
+  --heart-sparks-color: red;
+  --animation-fill-color: transparent;
+
+  --label-contour-color: white;
+}
