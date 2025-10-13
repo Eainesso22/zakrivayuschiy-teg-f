@@ -10,18 +10,6 @@
 
 */
 
-/* Здесь вы напишете основную часть стилей страницы.
-
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
-
-*/
-
 .page {
   min-inline-size: 375px;
   min-block-size: 100dvb;
@@ -35,9 +23,9 @@
 .header {
   display: flex;
   font-size: large;
+  min-block-size: 368px;
   margin-block-start: 100px;
   width: var(--card-inline-size);
-  block-size: 327px;
   justify-self: center;
   justify-content: center;
   background-color: #ffffff;
@@ -64,7 +52,7 @@
   align-self: center;
 }
 
-.dialog:open {
+.dialog[open] {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -74,11 +62,10 @@
   font-size: 14px;
   border: 2px solid black;
   inline-size: 341px;
-  block-size: 191px;
 }
 
 .dialog::backdrop {
-  background-color: #00000075;
+  background-color: rgba(0, 0, 0, 0.75);
 }
 
 .dialog__content {
@@ -89,9 +76,9 @@
 }
 
 .dialog__floppy__image {
-  block-size: 39px;
-  inline-size: 39px;
   align-self: center;
+  inline-size: 39px;
+  block-size: 39px;
 }
 
 .dialog__text {
@@ -101,12 +88,23 @@
 
 .dialog__button {
   inline-size: 261px;
-  block-size: 38px;
-  border: 2px solid black;
   align-self: center;
   margin-block-end: 30px;
+}
+
+.button .button__text {
+  mix-blend-mode: difference;
+  color: var(--hover-button-color);
+  transition: 0.5s step-start;
+}
+
+.button {
+  position: relative;
+  transition: background-color 0.5s ease-in-out;
   padding: 0;
+  border: 2px solid #000000;
   transition: box-shadow 0.3s ease;
+  background-color: #ffffff;
 }
 
 .button__text {
@@ -119,6 +117,7 @@
 
 .card {
   display: flex;
+  object-position: center;
   width: var(--card-inline-size);
   justify-self: center;
   background-color: #ffffff;
@@ -150,7 +149,7 @@
 .card__image-label {
   font-family: "PressStart2P", sans-serif;
   text-transform: uppercase;
-  opacity: 1;
+  opacity: 0.5;
   font-size: 14px;
   position: absolute;
   z-index: 1;
@@ -162,10 +161,9 @@
     0 -1px var(--label-contour-color);
 }
 
-@supports ((text-stroke: 1px #000000) or (-webkit-text-stroke: 1px #000000)) {
-  .card__image-lable {
+@supports  (-webkit-text-stroke: 1px #000000) {
+  .card__image-label {
     -webkit-text-stroke: 1px var(--label-contour-color);
-    text-stroke: 1px var(--label-contour-color);
     text-shadow: none;
   }
 }
@@ -190,28 +188,27 @@
 }
 
 .card__like-button {
-  padding: 0;
-  block-size: 38px;
+  min-block-size: 38px;
   inline-size: 130px;
-  transition: box-shadow 0.3s ease;
-  border: 2px solid black;
   background-color: transparent;
 }
 
 .card__icon-button {
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   padding: 0;
   background-color: transparent;
   border: 2px solid transparent;
   inline-size: 38px;
-  block-size: 38px;
   transform: translate(0px, -1px);
   transition: border 0.3s ease;
 }
 
 .like-icon {
+  display: flex;
+  align-items: center;
+  justify-self: center;
   overflow: visible;
 }
 
@@ -222,9 +219,11 @@
 .heart__contour {
   transition: fill 0.1s linear;
 }
+
 .heart__main-body {
   transition: fill 0.3s linear;
 }
+
 .heart__core {
   transition: fill 0.3s linear;
   transition-delay: 0.03s;
@@ -256,6 +255,7 @@
 
 .like-icon.is-liked .heart__core {
   fill: red;
+  transition-delay: 0s;
 }
 
 .like-icon.is-liked .heart__main-body {
@@ -276,23 +276,20 @@
   animation: blink 0.3s normal ease-in 0.3s;
 }
 
-.footer {
+.save__button__obertka {
   display: flex;
   margin-block-start: 50px;
   margin-block-end: 100px;
-  width: var(--footer-inline-size);
+  width: var(--save__button__obertka-inline-size);
   justify-self: center;
 }
 
 .save__button {
   display: flex;
-  inline-size: var(--footer-inline-size);
-  block-size: 84px;
-  background-color: #ffffff;
-  border: 2px solid #000000;
+  min-block-size: 55px;
+  inline-size: var(--save__button__obertka-inline-size);
   flex-direction: column;
   justify-content: center;
-  transition: box-shadow 0.3s ease;
   gap: 8px;
 }
 
@@ -304,16 +301,8 @@
   transition: 0.5s ease-in-out;
 }
 
-.dialog__button,
-.card__like-button,
-.save__button {
-  position: relative;
-  transition: background-color 0.5s ease-in-out;
-}
 
-.dialog__button:focus,
-.card__like-button:focus,
-.save__button:focus {
+.button:focus {
   outline: none;
   box-shadow: 2px 2px var(--accent-color);
 }
@@ -327,9 +316,7 @@
   outline: none;
 }
 
-.dialog__button::before,
-.card__like-button::before,
-.save__button::before {
+.button::before{
   display: block;
   content: "";
   position: absolute;
@@ -342,24 +329,13 @@
   background-color: var(--accent-color);
 }
 
-.dialog__button:hover::before,
-.card__like-button:hover::before,
-.save__button:hover::before {
+.button:hover::before {
   transform: scale(1, 1);
 }
 
-.dialog__button:hover .button__text,
-.card__like-button:hover .button__text,
-.save__button:hover .button__text {
+.button:hover .save__button__floppy-image {
   color: var(--hover-button-color);
   transition: 0.1s step-start;
-  mix-blend-mode: difference;
-}
-
-.save__button:hover .save__button__floppy-image {
-  mix-blend-mode: difference;
-  color: var(--hover-button-color);
-  transition: 0.5s step-start;
 }
 
 .line-through {
@@ -397,11 +373,12 @@
 
 @media (width > 375px) {
   .header {
-    block-size: 368px;
+    min-block-size: 368px
   }
 
-  .dialog:open {
+  .dialog[open] {
     inline-size: 353px;
+    min-block-size: 191px;
   }
 
   .dialog__content {
@@ -410,11 +387,11 @@
 
   .dialog__button {
     inline-size: 293px;
+    min-block-size: 38px;
   }
 
   .save__button {
     flex-direction: row;
-    block-size: 55px;
     align-items: center;
   }
 
