@@ -23,7 +23,6 @@
 .header {
   display: flex;
   font-size: large;
-  min-block-size: 368px;
   margin-block-start: 100px;
   width: var(--card-inline-size);
   justify-self: center;
@@ -42,6 +41,7 @@
   font-family: "PressStart2P", sans-serif;
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   font-weight: 400;
+  padding-top: 130px;
 }
 
 .header__subtitle {
@@ -50,6 +50,7 @@
   font-family: "PressStart2P", sans-serif;
   font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
   align-self: center;
+  padding-bottom: 130px;
 }
 
 .dialog[open] {
@@ -61,7 +62,7 @@
   font-family: "PressStart2P", sans-serif;
   font-size: 14px;
   border: 2px solid black;
-  inline-size: 341px;
+  inline-size: 353px;
 }
 
 .dialog::backdrop {
@@ -70,15 +71,16 @@
 
 .dialog__content {
   display: flex;
+  inline-size: 293px;
   gap: 20px;
-  margin-block-start: 30px;
-  margin-inline: 40px;
+  margin-block-start: 28px;
+  margin-inline: 28px;
 }
 
 .dialog__floppy__image {
-  align-self: center;
-  inline-size: 39px;
   block-size: 39px;
+  inline-size: 85px;
+  align-self: center;
 }
 
 .dialog__text {
@@ -87,26 +89,30 @@
 }
 
 .dialog__button {
-  inline-size: 261px;
+  block-size: 38px;
+  inline-size: 293px;
   align-self: center;
-  margin-block-end: 30px;
+  margin-block-end: 28px;
+  padding: 0;
+  text-transform: uppercase;
 }
 
 .button .button__text {
-  mix-blend-mode: difference;
   color: var(--hover-button-color);
+  mix-blend-mode: difference;
   transition: 0.5s step-start;
 }
 
 .button {
   position: relative;
-  transition: background-color 0.5s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
   padding: 0;
   border: 2px solid #000000;
   background-color: #ffffff;
 }
 
 .button__text {
+  color: var(--accent-color);
   position: relative;
   z-index: 1;
   transition: color 0.6s linear;
@@ -200,7 +206,6 @@
   background-color: transparent;
   border: 2px solid transparent;
   inline-size: 38px;
-  transform: translate(0px, -1px);
   transition: border 0.3s ease;
 }
 
@@ -254,17 +259,21 @@
 
 .like-icon.is-liked .heart__core {
   fill: red;
-  transition-delay: 0s;
+  transition-delay: 0.03s;
+  animation-duration: 0.3s;
+  
 }
 
 .like-icon.is-liked .heart__main-body {
   fill: red;
-  transition-delay: 0.05s;
+  transition-delay: 0s;
+  animation-duration: 0.3s;
 }
 
 .like-icon.is-liked .heart__contour {
   fill: red;
-  transition-delay: 0.06s;
+  transition-delay: 0s;
+  animation-duration: 0.1s;
 }
 
 .like-icon.is-liked .heart {
@@ -275,31 +284,34 @@
   animation: blink 0.3s normal ease-in 0.3s;
 }
 
-.save__button__obertka {
+.save__button__wrapper {
   display: flex;
   margin-block-start: 50px;
   margin-block-end: 100px;
-  width: var(--save__button__obertka-inline-size);
+  width: var(--save__button__wrapper-inline-size);
   justify-self: center;
 }
 
 .save__button {
   display: flex;
-  min-block-size: 55px;
-  inline-size: var(--save__button__obertka-inline-size);
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
+  min-block-size: 55px;
+  inline-size: var(--save__button__wrapper-inline-size);
   gap: 8px;
 }
 
 .save__button__floppy-image {
+  width: 21px;
+  height: 21px;
   position: relative;
   z-index: 1;
-  width: 29px;
   align-self: center;
   transition: 0.5s ease-in-out;
+  color: var(--hover-button-color);
+  mix-blend-mode: difference;
 }
-
 
 .button:focus {
   outline: none;
@@ -332,8 +344,8 @@
   transform: scale(1, 1);
 }
 
+
 .button:hover .save__button__floppy-image {
-  color: var(--hover-button-color);
   transition: 0.1s step-start;
 }
 
@@ -370,14 +382,17 @@
   filter: sepia(0.3);
 }
 
-@media (width > 375px) {
-  .header {
-    min-block-size: 368px
+@media (width < 376px) {
+  .header__title {
+    padding-top: 122px;
+  }
+
+  .header__subtitle {
+    padding-bottom: 122px;
   }
 
   .dialog[open] {
     inline-size: 353px;
-    min-block-size: 191px;
   }
 
   .dialog__content {
@@ -386,16 +401,18 @@
 
   .dialog__button {
     inline-size: 293px;
-    min-block-size: 38px;
   }
 
   .save__button {
-    flex-direction: row;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    transition: 0.5s ease-in-out;
+    height: 84px;
   }
 
   .save__button__floppy-image {
-    width: 21px;
-    height: 21px;
+    width: 28px;
+    height: 28px;
   }
 }

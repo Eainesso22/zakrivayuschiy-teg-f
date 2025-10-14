@@ -22,9 +22,9 @@
     linear-gradient(#e7e7e7 0.01%, #1a1a1a);
 
   --card-inline-size: clamp(375px, 50vw, 700px);
-  --save__button__obertka-inline-size: clamp(306px, 48.6vw, 335px);
+  --save__button__wrapper-inline-size: clamp(306px, 48.6vw, 335px);
 
-  --accent-color: black;
+  --accent-color: #000;
   --hover-button-color: white;
 
   --heart-contour-color: black;
