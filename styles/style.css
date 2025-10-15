@@ -105,7 +105,7 @@
 
 .button {
   position: relative;
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease;
   padding: 0;
   border: 2px solid #000000;
   background-color: #ffffff;
@@ -392,11 +392,11 @@
   }
 
   .dialog[open] {
-    inline-size: 353px;
+    inline-size: 341px;
   }
 
   .dialog__content {
-    margin-inline: 30px;
+    margin-inline: 20px;
   }
 
   .dialog__button {
